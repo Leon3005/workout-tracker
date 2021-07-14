@@ -5,13 +5,13 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3005;
 
-// const dbOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+const dbOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
-// const DB_NAME = "mangaDb";
+const DB_NAME = "workout";
 
-// const DB_URL = process.env.MONGODB_URI || `mongodb://localhost/${DB_NAME}`;
+const DB_URL = process.env.MONGODB_URI || `mongodb://localhost/${DB_NAME}`;
 
-// mongoose.connect(DB_URL, dbOptions);
+mongoose.connect(DB_URL, dbOptions);
 
 const app = express();
 
