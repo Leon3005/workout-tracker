@@ -8,11 +8,9 @@ const workoutSchema = {
     {
       name: {
         type: String,
-        required: true,
       },
       type: {
         type: String,
-        required: true,
       },
       duration: Number,
       weight: Number,
