@@ -4,12 +4,14 @@ const {
   getWorkouts,
   addWorkout,
   continueWorkout,
+  getWorkoutsInRange,
 } = require("../../controllers/api/workouts");
 
 const router = Router();
 
-router.get("/", getWorkouts);
-router.post("/", addWorkout);
 router.put("/:id", continueWorkout);
+router.post("/", addWorkout);
+router.get("/range", getWorkoutsInRange);
+router.get("/", getWorkouts);
 
 module.exports = router;
