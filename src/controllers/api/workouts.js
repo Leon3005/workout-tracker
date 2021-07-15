@@ -7,6 +7,9 @@ const getWorkouts = async (req, res) => {
         totalDuration: {
           $sum: "$exercises.duration",
         },
+        totalDistance: {
+          $sum: "$exercises.distance",
+        },
       },
     },
   ]);
@@ -36,7 +39,6 @@ const addWorkout = async (req, res) => {
 };
 
 const continueWorkout = async (req, res) => {
-  const { duration, name, reps, sets, type, weight } = req.body;
   const { id } = req.params;
 
   const data = await Workout.findByIdAndUpdate(id, {
@@ -49,7 +51,20 @@ const continueWorkout = async (req, res) => {
 };
 
 const getWorkoutsInRange = async (req, res) => {
-  const workouts = await Workout.find({});
+  const workouts = await Workout.aggregate([
+    {
+      $addFields: {
+        totalDuration: {
+          $sum: "$exercises.duration",
+        },
+      },
+    },
+  ])
+    .sort({
+      _id: -1,
+    })
+    .limit(7);
+
   res.json(workouts);
 };
 
