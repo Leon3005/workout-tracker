@@ -13,7 +13,7 @@ const dbOptions = {
   useFindAndModify: true,
 };
 
-const DB_NAME = "workout";
+const DB_NAME = process.env.DB_NAME || "workout";
 
 const DB_URL = process.env.MONGODB_URI || `mongodb://localhost/${DB_NAME}`;
 
