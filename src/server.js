@@ -6,7 +6,12 @@ const routes = require("./routes");
 
 const PORT = process.env.PORT || 3005;
 
-const dbOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+const dbOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: true,
+};
 
 const DB_NAME = "workout";
 
